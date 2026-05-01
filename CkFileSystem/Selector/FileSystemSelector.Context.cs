@@ -47,7 +47,7 @@ public partial class CkFileSystemSelector<T, TStateStorage>
     /// <param name="folder"> The folder that was right-clicked on. </param>
     private void RightClickContext(CkFileSystem<T>.Folder folder)
     {
-        using ImRaii.IEndObject _ = ImRaii.Popup(folder.Identifier.ToString());
+        using var _ = ImRaii.Popup(folder.Identifier.ToString());
         if (!_)
             return;
 
@@ -59,7 +59,7 @@ public partial class CkFileSystemSelector<T, TStateStorage>
     /// <param name="leaf"> The leaf that was right-clicked on. </param>
     private void RightClickContext(CkFileSystem<T>.Leaf leaf)
     {
-        using ImRaii.IEndObject _ = ImRaii.Popup(leaf.Identifier.ToString());
+        using var _ = ImRaii.Popup(leaf.Identifier.ToString());
         if (!_)
             return;
 
@@ -164,7 +164,7 @@ public partial class CkFileSystemSelector<T, TStateStorage>
         string currentPath = leaf.FullName();
         foreach (var (folder, idx) in folders.WithIndex().Where(s => s.Value.Length > 0))
         {
-            using ImRaii.Id id         = ImRaii.PushId(idx);
+            using var id = ImRaii.PushId(idx);
             string targetPath = $"{folder}/{currentName}";
             if (CkFileSystem.Equal(targetPath, currentPath))
                 continue;

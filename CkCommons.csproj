@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Dalamud.NET.Sdk/14.0.1">
-	<!--Project Sdk="Microsoft.NET.Sdk" Revert to this id Dalamud.NET.Sdk causes issues.-->
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+	<!--Project Sdk="Microsoft.NET.Sdk" Revert to this if Dalamud.NET.Sdk causes issues.-->
 	<!--Basic Plugin Definitions-->
      <PropertyGroup>
 	    <Authors>CordeliaMist</Authors>

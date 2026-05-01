@@ -36,7 +36,7 @@ public partial class CkFileSystemSelector<T, TStateStorage>
 
     public static bool OpenRenamePopup(string popupName, ref string newName)
     {
-        using ImRaii.IEndObject popup = ImRaii.Popup(popupName);
+        using var popup = ImRaii.Popup(popupName);
         if (!popup)
             return false;
 

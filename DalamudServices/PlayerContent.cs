@@ -13,7 +13,7 @@ namespace CkCommons;
 public static class PlayerContent
 {
     private static Dictionary<uint, string> Cache = [];
-    public static ushort TerritoryID => Svc.ClientState.TerritoryType;
+    public static uint TerritoryID => Svc.ClientState.TerritoryType;
 
     public static string TerritoryName
     {
