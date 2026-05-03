@@ -12,7 +12,7 @@ public static partial class CkGui
     public const string TipSep = "--SEP--";
     public const string TipNL = "--NL--";
     public const string TipCol = "--COL--";
-    public const HFlags TipHoverFlags = HFlags.RectOnly | HFlags.AllowWhenDisabled;
+    public const HFlags TipHoverFlags = HFlags.AllowWhenDisabled;
 
     private static bool ShowTooltip(string? text, HFlags hoverFlags)
         => ImGui.IsItemHovered(hoverFlags) && !string.IsNullOrWhiteSpace(text);
