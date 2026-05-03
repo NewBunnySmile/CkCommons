@@ -233,10 +233,16 @@ public class DynamicFilterCache<T> : IDisposable where T : class
                     }
                 }
 
+                // If root, and we dont want to sort it, return its children unsorted.
+                if (fc.Folder.IsRoot && !_parent.SortRoot)
+                    fc.Children = childNodes;
                 // Sorts the remaining child nodes by their folder's, and then selects the nodes for output.
-                fc.Children = fc.Folder.Sorter
-                    .SortItems(childNodes.Select(c => c.Folder))
-                    .Select(sorted => childNodes.First(c => c.Folder == sorted)).ToList();
+                else
+                {
+                    fc.Children = [.. fc.Folder.Sorter
+                        .SortItems(childNodes.Select(c => c.Folder))
+                        .Select(sorted => childNodes.First(c => c.Folder == sorted))];
+                }
             }
             // Otherwise, if closed, scan to see if any sub-nodes are visible.
             else

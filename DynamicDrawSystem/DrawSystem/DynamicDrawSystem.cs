@@ -50,6 +50,9 @@ public abstract partial class DynamicDrawSystem<T> where T : class
     /// <summary> The root folder collection of this dynamic folder system </summary>
     protected DynamicFolderGroup<T> root = DynamicFolderGroup<T>.CreateRoot([DynamicSorterEx.ByFolderName<T>()]);
 
+    /// <summary> Determines if the root folderGroup sorts its folders or not. </summary>
+    public bool SortRoot { get; private set; } = true;
+
     /// <summary>
     ///     Read-only Accessor for root via classes desiring inspection while preventing edits.
     ///     (This is technically already dont via internal setters but whatever).
@@ -155,6 +158,14 @@ public abstract partial class DynamicDrawSystem<T> where T : class
     {
         if (_folderMap.TryGetValue(folderName, out var folder) && folder is DynamicFolder<T> f)
             UpdateFolder(f);
+    }
+
+    public void SetRootSortPolicy(bool sortRootFolder)
+    {
+        var previous = SortRoot;
+        SortRoot = sortRootFolder;
+        if (previous != sortRootFolder)
+            CollectionUpdated?.Invoke(CollectionUpdate.SortDirectionChange, root, null);
     }
 
     public void SetSortDirection(IDynamicCollection<T> folder, bool isDescending)
