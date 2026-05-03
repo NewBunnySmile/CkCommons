@@ -223,7 +223,7 @@ public static partial class CkGui
         int maxLength, Vector4? color = null, float? width = null, bool disabled = false)
     {
         using var dis = ImRaii.PushStyle(ImGuiStyleVar.Alpha, disabled ? 0.5f : 1f);
-        using var col = new ImRaii.Color();
+        using var col = new ImRaii.ColorDisposable();
 
         // Disable if issues, tends to be culpret
         if (color.HasValue)

@@ -1,8 +1,8 @@
 using CkCommons.Gui;
-using Dalamud.Interface.Utility.Raii;
 using Dalamud.Utility;
 using Dalamud.Bindings.ImGui;
 using OtterGui.Text;
+using OtterGui.Raii;
 
 namespace CkCommons.Raii;
 public static partial class CkRaii
