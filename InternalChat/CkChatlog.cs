@@ -83,8 +83,13 @@ public abstract class CkChatlog<T> where T : CkChatMessage
         => $"Sent @ {message.Timestamp.ToString("T", CultureInfo.CurrentCulture)}\n[Right-Click] View Interactions";
     protected abstract void OnMiddleClick(T message);
     protected abstract void OnSendMessage(string message);
+
+    protected virtual void PreDraw()
+    { }
+
     public void DrawChat(Vector2 region, WFlags flags = WFlags.NoScrollbar)
     {
+        PreDraw();
         // Create a windows drawlist here so we have the outermost drawlist.
         Vector2 inputMin;
 
